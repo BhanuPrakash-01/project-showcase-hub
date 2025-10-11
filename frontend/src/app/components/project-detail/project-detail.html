@@ -1,0 +1,26 @@
+<div *ngIf="project" class="detail-container">
+  <a routerLink="/" class="back-link">&larr; Back to Projects</a>
+  <h1>{{ project.title }}</h1>
+
+  <div class="meta-info">
+    <div class="tech-stack">
+      <span *ngFor="let tech of project.techStack" class="tech-tag">{{ tech }}</span>
+    </div>
+    <div class="team-members" *ngIf="project.teamMembers && project.teamMembers.length > 0">
+      <strong>Team:</strong> {{ project.teamMembers.join(', ') }}
+    </div>
+  </div>
+  
+  <div class="project-links">
+      <a [href]="project.githubLink" target="_blank" class="btn btn-secondary">View Code</a>
+      <a *ngIf="project.liveLink" [href]="project.liveLink" target="_blank" class="btn btn-primary">Live Demo</a>
+  </div>
+
+ <div class="documentation-content">
+  <h2>Project Documentation</h2>
+  
+  <div class="documentation-text">
+    {{ project.documentation }}
+  </div>
+
+</div>

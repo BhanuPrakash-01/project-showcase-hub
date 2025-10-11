@@ -1,0 +1,57 @@
+<div class="form-container">
+  <h2>Submit Your Project</h2>
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="title">Project Title</label>
+      <input id="title" type="text" formControlName="title">
+      <div *ngIf="projectForm.get('title')?.invalid && projectForm.get('title')?.touched" class="error">
+        Title is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="githubLink">GitHub Link</label>
+      <input id="githubLink" type="url" formControlName="githubLink">
+    </div>
+
+    <div class="form-group">
+      <label for="liveLink">Live Demo Link (Optional)</label>
+      <input id="liveLink" type="url" formControlName="liveLink">
+    </div>
+
+   <div class="form-group">
+        <label>Tech Stack</label>
+        <div formArrayName="techStack">
+          <div *ngFor="let tech of techStack.controls; let i=index" class="dynamic-input-row">
+            <input [formControlName]="i" placeholder="e.g., Angular">
+            <button type="button" (click)="removeTech(i)" class="btn btn-danger btn-delete-card">Remove</button>
+          </div>
+        </div>
+        <button type="button" (click)="addTech()" class="btn btn-add-item">+ Add Tech</button>
+    </div>
+    <div class="form-group">
+      <label for="documentation">Project Documentation</label>
+      <textarea id="documentation" formControlName="documentation" rows="10" 
+        placeholder="Describe your project in detail. How did you build it? What challenges did you face? Why did you choose this tech stack?"></textarea>
+  </div>
+
+    <div class="form-group">
+        <label>Team Members</label>
+        <div formArrayName="teamMembers">
+          <div *ngFor="let member of teamMembers.controls; let i=index" class="dynamic-input-row">
+            <input [formControlName]="i" placeholder="e.g., Jane Doe">
+            <button type="button" (click)="removeTeamMember(i)" class="btn btn-danger btn-delete-card">Remove</button>
+          </div>
+        </div>
+        <button type="button" (click)="addTeamMember()" class="btn btn-add-item">+ Add Member</button>
+    </div>
+    
+    <button type="submit" [disabled]="projectForm.invalid" class="btn btn-primary">Submit for Review</button>
+  </form>
+</div>

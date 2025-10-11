@@ -1,0 +1,118 @@
+.dashboard-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.dashboard-container h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+/* --- Reusing Homepage Styles --- */
+/*
+  We can copy the exact same styles from project-list.component.css
+  to ensure visual consistency.
+*/
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+/* Adding a subtle border to distinguish admin cards */
+.admin-card {
+  border: 2px solid #ffab40; /* Amber color for "pending" status */
+}
+
+.card-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.card-content h2 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.card-content p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  background-color: #e8eaf6;
+  color: #3f51b5;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.card-footer {
+  padding: 1rem 1.5rem;
+  background-color: #fff8e1; /* Light yellow to match pending border */
+  border-top: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+}
+
+.view-code-link {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.view-code-link:hover {
+  text-decoration: underline;
+}
+
+.no-projects-message {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--surface-color);
+  border-radius: var(--border-radius);
+}
+
+.project-card-link {
+  text-decoration: none;
+  color: inherit; /* Inherits the text color from the body */
+  display: block; /* Ensures the link takes up the full card space */
+   cursor: pointer;
+}
+
+.project-description {
+  /* Limits the text to 3 lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  
+  /* Set a minimum height to prevent layout shifts if description is short */
+  min-height: 60px; 
+  margin-bottom: 1rem;
+}

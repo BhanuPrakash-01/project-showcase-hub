@@ -1,0 +1,37 @@
+<div class="dashboard-container">
+  <h2>Admin Dashboard: Pending Projects</h2>
+
+  <div class="project-gallery" *ngIf="pendingProjects.length > 0; else noPending">
+<div *ngFor="let project of pendingProjects" 
+     (click)="navigateToDetail(project._id, $event)" 
+     class="project-card-link">
+
+  <div class="project-card admin-card">
+    <div class="card-content">
+      <h2>{{ project.title }}</h2>
+      <p class="project-description">{{ project.description }}</p>
+      <div class="tech-stack">
+        <span *ngFor="let tech of project.techStack" class="tech-tag">{{ tech }}</span>
+      </div>
+    </div>
+    
+    <div class="card-footer">
+      <div class="links">
+        <a [href]="project.githubLink" target="_blank" rel="noopener noreferrer" class="view-code-link">GitHub</a>
+        <a *ngIf="project.liveLink" [href]="project.liveLink" target="_blank" rel="noopener noreferrer" class="live-link">Live Demo</a>
+      </div>
+      <div class="actions button-group">
+        <button (click)="approve(project._id)" class="btn btn-success">Approve</button>
+        <button (click)="reject(project._id)" class="btn btn-secondary">Reject</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+
+  <ng-template #noPending>
+    <div class="no-projects-message">
+      <p>No projects are currently awaiting review. Great job!</p>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,131 @@
+/*
+  The `display: grid` property turns the project-gallery into a grid container.
+  `grid-template-columns` is the key:
+    - `repeat()`: Repeats the pattern.
+    - `auto-fill`: Creates as many columns as can fit in the available space.
+    - `minmax(320px, 1fr)`: Makes each column a minimum of 320px wide, but allows them
+      to grow and share the space equally (1fr). This is the magic for responsiveness.
+  `gap` adds space between the grid items.
+*/
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  display: flex; /* Use flexbox for internal alignment */
+  flex-direction: column;
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden; /* Ensures content respects the border radius */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-content {
+  padding: 1.5rem;
+  flex-grow: 1; /* Allows this section to grow and push the footer down */
+}
+
+.card-content h2 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.card-content p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tech-tag {
+  background-color: #e8eaf6; /* Lighter purple shade */
+  color: #3f51b5; /* Darker purple */
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px; /* Pill shape */
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.card-footer {
+  padding: 1rem 1.5rem;
+  background-color: #f9f9f9;
+  border-top: 1px solid #eee;
+}
+
+.view-code-link {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.view-code-link:hover {
+  color: #311b92;
+  text-decoration: underline;
+}
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-links {
+  display: flex;
+  gap: 1rem; /* Adds space between "View Code" and "Live Demo" */
+}
+
+.live-link {
+  font-weight: 600;
+  color: #2e7d32; /* Green color for live link */
+  text-decoration: none;
+}
+
+.live-link:hover {
+  text-decoration: underline;
+}
+
+.btn-delete-card {
+  padding: 0.3rem 0.8rem; /* Smaller padding */
+  font-size: 0.85rem;      /* Smaller font size */
+  background-color: transparent;
+  color: #c62828;          /* Red text */
+  border: 1px solid #ef9a9a; /* Light red border */
+  border-radius: 7px;
+}
+
+.btn-delete-card:hover {
+  background-color: #ffebee; /* Light red background on hover */
+  color: #b71c1c;
+}
+
+.project-card-link {
+  text-decoration: none;
+  color: inherit; /* Inherits the text color from the body */
+  display: block; /* Ensures the link takes up the full card space */
+  cursor: pointer;
+}
+
+.project-description {
+  /* Limits the text to 3 lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  
+  /* Set a minimum height to prevent layout shifts if description is short */
+  min-height: 60px; 
+  margin-bottom: 1rem;
+}

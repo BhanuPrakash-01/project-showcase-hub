@@ -1,0 +1,23 @@
+<nav class="navbar">
+  <div class="nav-brand">
+    <a routerLink="/">Project Showcase Hub</a>
+  </div>
+  <div class="nav-links">
+    <ng-container *ngIf="authService.isLoggedIn()">
+      <a *ngIf="authService.isLoggedIn() && !authService.isAdmin()" routerLink="/submit" class="nav-button">
+        Submit Project
+      </a>
+      <a *ngIf="authService.isAdmin()" routerLink="/admin" class="nav-button admin">Admin</a>
+      <button (click)="logout()" class="nav-button">Logout</button>
+    </ng-container>
+
+    <ng-container *ngIf="!authService.isLoggedIn()">
+      <a routerLink="/login" class="nav-button">Login</a>
+      <a routerLink="/register" class="nav-button primary">Register</a>
+    </ng-container>
+  </div>
+</nav>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>

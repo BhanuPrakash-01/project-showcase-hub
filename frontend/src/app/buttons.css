@@ -1,0 +1,62 @@
+/* General Button Styling */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Primary Action Button (e.g., Submit) */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: #4e00b8;
+  transform: translateY(-2px);
+}
+.btn-primary:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Secondary Action Button (e.g., Add Tech) */
+.btn-secondary {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ddd;
+}
+.btn-secondary:hover {
+  background-color: #e0e0e0;
+}
+
+/* Success Action Button (e.g., Approve) */
+.btn-success {
+  background-color: #2e7d32; /* Green */
+  color: white;
+}
+.btn-success:hover {
+  background-color: #1b5e20;
+}
+
+/* Danger Action Button (e.g., Reject, Remove, Delete) */
+.btn-danger {
+  background-color: #c62828; /* Red */
+  color: white;
+}
+.btn-danger:hover {
+  background-color: #b71c1c;
+}
+
+/* Styles for a group of buttons */
+.button-group {
+  display: flex;
+  gap: 0.75rem;
+}

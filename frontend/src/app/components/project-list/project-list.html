@@ -1,0 +1,42 @@
+<div class="project-gallery" *ngIf="projects.length > 0; else noProjects">
+
+<div *ngFor="let project of projects" 
+     (click)="navigateToDetail(project._id, $event)" 
+     class="project-card-link">
+
+  <div class="project-card">
+    <div class="card-content">
+      <h2>{{ project.title }}</h2>
+      <p class="project-description">{{ project.description }}</p>
+      <div class="tech-stack">
+        <span *ngFor="let tech of project.techStack" class="tech-tag">{{ tech }}</span>
+      </div>
+    </div>
+    
+    <div class="card-footer">
+      <div class="footer-links">
+        <a [href]="project.githubLink" target="_blank" rel="noopener noreferrer" class="view-code-link">
+          View Code
+        </a>
+        <a *ngIf="project.liveLink" [href]="project.liveLink" target="_blank" rel="noopener noreferrer" class="live-link">
+          Live Demo
+        </a>
+      </div>
+      <button 
+        *ngIf="authService.isAdmin()" 
+        (click)="deleteProject(project._id)" 
+        class="btn btn-danger btn-delete-card">
+        Delete
+      </button>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<ng-template #noProjects>
+  <div class="no-projects-message">
+    <p>No projects have been approved yet. Check back soon!</p>
+  </div>
+</ng-template>

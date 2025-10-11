@@ -1,0 +1,111 @@
+.form-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px #d4bfff;
+}
+
+.error-message {
+  color: #d32f2f;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.error-message.server-error {
+  background-color: #ffe0e0;
+  border: 1px solid #d32f2f;
+  border-radius: var(--border-radius);
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: #4e00b8;
+}
+
+.submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Container for each dynamic input row */
+.dynamic-input-row {
+  display: flex;       /* Aligns items horizontally */
+  align-items: center; /* Vertically centers the items */
+  gap: 0.75rem;        /* Adds space between the input and the button */
+  margin-bottom: 0.75rem; /* Adds space between rows */
+}
+
+/* Make the input field take up all available space */
+.dynamic-input-row input {
+  flex-grow: 1;
+}
+
+/* Style for the add button */
+.btn-add-item {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px dashed var(--primary-color);
+  font-weight: 500;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.btn-add-item:hover {
+  background-color: #f0e4ff;
+}
