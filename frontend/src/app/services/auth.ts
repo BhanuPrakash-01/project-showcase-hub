@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 // Define the shape of the user object we get from the API
 export interface User {
@@ -16,8 +17,7 @@ export interface User {
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5001/api/users';
-
+  private apiUrl = `${environment.apiUrl}/users`;
   // A BehaviorSubject holds the current user value and broadcasts it to subscribers.
   // We initialize it with the user data from localStorage, if it exists.
   private userSubject = new BehaviorSubject<User | null>(this.getUserFromStorage());

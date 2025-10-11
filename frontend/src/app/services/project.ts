@@ -3,6 +3,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 // We define an interface for type safety. This describes the shape of a project object.
 export interface Project {
@@ -21,7 +22,7 @@ export interface Project {
 })
 export class ProjectService {
   // The URL of our backend's public projects endpoint
-  private apiUrl = 'http://localhost:5001/api/projects';
+  private apiUrl = `${environment.apiUrl}/projects`;
 
   // Inject the HttpClient tool into our service
   constructor(private http: HttpClient) {}
@@ -36,8 +37,8 @@ export class ProjectService {
     return this.http.post<any>(this.apiUrl, projectData);
   }
 
-  private adminApiUrl = 'http://localhost:5001/api/admin';
-
+  private adminApiUrl = `${environment.apiUrl}/admin`;
+  
   getPendingProjects(): Observable<Project[]> {
     // The auth interceptor will add the token automatically
     return this.http.get<Project[]>(`${this.adminApiUrl}/projects/pending`);
